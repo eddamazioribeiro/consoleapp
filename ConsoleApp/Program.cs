@@ -12,17 +12,18 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
 
+
             //Classes.Cliente cli2 = new Classes.Cliente(3);
             //cli2.Dispose();
             // using: chama automaticamente o método Disposable
-
             try
             {
                 Classes.Cliente cli = new Classes.Cliente();
                 cli.Codigo = 3;
-                cli.Nome = "ed".LetraInicialMaiuscula(true);
+                cli.Nome = "eduardo".LetraInicialMaiuscula(true);
                 cli.Tipo = 1;
                 cli.DataCadastro = new DateTime(2018, 12, 4);
+                cli.Dispose();
             }
             catch (ConsoleApp.Excecoes.ValidacaoException ex)
             {
@@ -32,6 +33,22 @@ namespace ConsoleApp
                 throw;
 
             }
+
+            using (Classes.Cliente cli_banco = new Classes.Cliente(3))
+            {
+                try
+                {
+                    Console.WriteLine(cli_banco.Nome);
+                    Console.ReadLine();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+
             /*
             using (Classes.Cliente cli2 = new Classes.Cliente(5))
             {

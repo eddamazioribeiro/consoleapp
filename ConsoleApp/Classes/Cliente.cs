@@ -19,11 +19,12 @@ namespace ConsoleApp.Classes
             {
                 if (value < 0)
                 {
-                    throw new ConsoleApp.Excecoes.ValidacaoException("O ´código do cliente não pode ser negativo!");
                     _codigo = 0;
+                    throw new ConsoleApp.Excecoes.ValidacaoException("O código do cliente não pode ser negativo!");
+                    
                 }
 
-                _codigo = 0;
+                _codigo = value;
 
             }
         }
@@ -52,9 +53,9 @@ namespace ConsoleApp.Classes
             set { _tipo = value; }
         }
 
-        private DateTime _dataCadastro;
+        private DateTime? _dataCadastro;
 
-        public DateTime DataCadastro
+        public DateTime? DataCadastro
         {
             get { return _dataCadastro; }
             set { _dataCadastro = value; }
